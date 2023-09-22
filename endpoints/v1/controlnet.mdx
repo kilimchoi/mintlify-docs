@@ -48,14 +48,6 @@ description: 'Generate an image from text & ControlNet models'
   Specify the name of the model you'd like to use. You can find the model names [here](/endpoints/models)
 </ParamField>
 
-<ParamField body="webhook" type="string" required>
-  This is the callback url where you want to receive your response.
-</ParamField>
-
-<ParamField body="track_id" type="string">
-  You can specify any value here to track the request that's received on your webhook's end.
-</ParamField>
-
 <ParamField body="controlnet_args" type="object[]" required>
   <Expandable title="properties">
     <ParamField body="input_image" type="string" required>
@@ -68,6 +60,14 @@ description: 'Generate an image from text & ControlNet models'
       Model name
     </ParamField>
   </Expandable>
+</ParamField>
+
+<ParamField body="webhook" type="string" required>
+  This is the callback url where you want to receive your response.
+</ParamField>
+
+<ParamField body="track_id" type="string">
+  You can specify any value here to track the request that's received on your webhook's end.
 </ParamField>
 
 <ParamField body="seed" type="string">
