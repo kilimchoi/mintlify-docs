@@ -47,6 +47,10 @@ description: 'Generate an image from an image asynchronously'
   Specify the name of the model you'd like to use. You can find the model names [here](/endpoints/models)
 </ParamField>
 
+<ParamField body="include_init_images" type="boolean">
+  Set it to true if you want to do inpainting
+</ParamField>
+
 <ParamField body="sampler_name" type="string" required>
   This is the name of the sampler method you will be using to generate an image. Image output varies slightly depending on the method.
   You can pick one of the following methods: `Euler a`, `Euler`, `LMS`, `Heun`, `DPM2`, `DPM2 a`, `DPM++ 2S a`, `DPM++ 2M`, `DPM ++ SDE`, `DPM fast`, `DPM adaptive`, `LMS Karras`, `DPM2 a Karras`, `DPM++ 2S a Karras`, `DPM++ 2M Karras`, `DPM++ SDE Karras`, `DDIM`, `PLMS`, `UniPC`
@@ -63,7 +67,7 @@ description: 'Generate an image from an image asynchronously'
   Link to the image that will be used for inpainting. You need to specify the region of the starting image that you want modified.
 </ParamField>
 <ParamField body="inpaint_full_res" type="boolean">
-  If set to true, inpaint area will be the same resolution as the starting image. If set to false, inpaint area will stretch to fit the starting image. This parameter is required for inpainting.
+  If set to true, inpaint area will be the same resolution as the provided image. If set to false, inpaint area will stretch to fit the provided image. This parameter is required for inpainting.
 </ParamField>
 <ParamField body="inpaint_full_res_padding" type="integer">
   Padding around the masked object to inpaint in full resolution This parameter is required for inpainting.
