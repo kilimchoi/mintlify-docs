@@ -1,7 +1,7 @@
 ---
-title: 'v1/sync/txt2img'
-api: 'POST https://randomseed.lol/v1/sync/txt2img'
-description: 'Generate an image from a text prompt synchronously'
+title: 'v1/controlnet'
+api: 'POST https://randomseed.lol/v1/controlnet'
+description: 'Generate an image from text & ControlNet models'
 ---
 ### Headers
 
@@ -32,7 +32,7 @@ description: 'Generate an image from a text prompt synchronously'
 </ParamField>
 
 <ParamField body="steps" type="string">
-  This is the number of the denoising steps used by the AI model when generating an image from the text prompt. A higher number results in a longer generation time, and does not necessarily guarantee higher image quality.
+  This is the number of the denoising steps used by the AI model when generating an image. A higher number results in a longer generation time, and does not necessarily guarantee higher image quality.
 </ParamField>
 
 <ParamField body="cfg_scale" type="float">
@@ -45,12 +45,35 @@ description: 'Generate an image from a text prompt synchronously'
 </ParamField>
 
 <ParamField body="model_name" type="string" required>
-  Specify the name of the model you'd like to use. You can find the model names [here](/endpoints/models)
+  Specify the name of the model you'd like to use. You can find the model names [here](/api-reference/v1/models)
+</ParamField>
+
+<ParamField body="controlnet_args" type="object[]" required>
+  <Expandable title="properties">
+    <ParamField body="input_image" type="string" required>
+      Link to the image you want to use.
+    </ParamField>
+    <ParamField body="module" type="string">
+      Module name. Refer to this [table](/documentation/controlnet-model-to-module-mapping) for a list of supported modules.
+    </ParamField>
+    <ParamField body="model" type="string" required>
+      Model name. Refer to this [table](/documentation/controlnet-model-to-module-mapping) for a list of supported ControlNet models.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="webhook" type="string" required>
+  This is the callback url where you want to receive your response.
+</ParamField>
+
+<ParamField body="track_id" type="string">
+  You can specify any value here to track the request that's received on your webhook's end.
 </ParamField>
 
 <ParamField body="seed" type="string">
   This is the value that determines the output of a random number generator. You can get ALMOST the same image if you provide the same parameters and the seed.
 </ParamField>
+
 
 ### Response
 
@@ -58,42 +81,43 @@ description: 'Generate an image from a text prompt synchronously'
   image generation in progress
 </ResponseField>
 
-<ResponseField name="output" type="string[]">
-  array of image urls
-</ResponseField>
-
 <RequestExample>
 
 ```bash Example Request
-curl --location 'https://randomseed.lol/v1/txt2img' \
+curl --location 'https://randomseed.lol/v1/controlnet' \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer $RANDOMSEED_API_KEY' \
   --data '{
-      "txt2img": {
-          "prompt": "Cute cat",
-          "negative_prompt": "ugly, out of frame",
-          "width": "512",
+      "controlnet": {
+          "prompt": "Beautiful landscape with fluffy clouds, HDR lighting, high dynamic range, vibrant colors",
+          "negative_prompt": "((deformed face)), ((disfigured)), ((bad art)), ((deformed)), (disfigured face and eyes:1.1)",
+          "width": "1028",
           "height": "512",
-          "number_of_images": "1",
+          "number_of_images": "4",
           "steps": "20",
-          "cfg_scale": 7,
+          "cfg_scale": 8,
           "sampler_name": "Euler a",
           "model_name": "realistic_vision_v4",
-          "seed": "-1",
+          "controlnet_args": [
+              {
+                  "input_image": "...",
+                  "module": null,
+                  "model": "control_v1p_sd15_qrcode_monster"
+              }
+          ],
+          "webhook": "...",
+          "track_id": 1,
+          "seed": "-1"
       }
   }'
 ```
-
 </RequestExample>
 
 <ResponseExample>
 
 ```json Response
 {
-    "message": "image generated",
-    "output": [
-        "..."
-    ]
+    "message": "image generation in progress"
 }
 ```
 </ResponseExample>

@@ -20,16 +20,27 @@
       "url": "mailto:support@randomseed.co"
     }
   ],
-
-
+  "tabs": [
+    {
+      "name": "Documentation",
+      "url": "documentation"
+    }
+  ],
+  "primaryTab": {
+    "name": "API Reference"
+  },
   "navigation": [
     {
-      "group": "API Reference",
-      "pages": ["introduction"]
+      "group": "Quick Start",
+      "pages": ["api-reference/introduction"]
     },
     {
       "group": "Endpoints",
-      "pages": ["endpoints/v1/txt2img", "endpoints/v1/sync/txt2img", "endpoints/v1/img2img", "endpoints/v1/sync/img2img", "endpoints/v1/controlnet", "endpoints/v1/models", "endpoints/v1/load-model", "endpoints/v1/animatediffusion", "endpoints/v1/roop"]
+      "pages": ["api-reference/v1/txt2img", "api-reference/v1/sync/txt2img", "api-reference/v1/img2img", "api-reference/v1/sync/img2img", "api-reference/v1/controlnet", "api-reference/v1/models", "api-reference/v1/load-model", "api-reference/v1/animatediffusion", "api-reference/v1/roop"]
+    },
+    {
+      "group": "Documentation",
+      "pages": ["documentation/controlnet-model-to-module-mapping"]
     }
   ],
   "footerSocials": {
