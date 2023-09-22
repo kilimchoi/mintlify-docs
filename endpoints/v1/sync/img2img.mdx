@@ -1,7 +1,7 @@
 ---
-title: 'v1/img2img'
-api: 'POST https://randomseed.lol/v1/img2img'
-description: 'Generate an image from an image asynchronously'
+title: 'v1/sync/img2img'
+api: 'POST https://randomseed.lol/v1/sync/img2img'
+description: 'Generate an image from an image synchronously'
 ---
 ### Headers
 
@@ -27,7 +27,7 @@ description: 'Generate an image from an image asynchronously'
   This is the height of the image
 </ParamField>
 
-<ParamField body="steps" type="string">
+<ParamField body="number_of_steps" type="string">
   This is the number of the denoising steps used by the AI model when generating an image. A higher number results in a longer generation time, and does not necessarily guarantee higher image quality.
 </ParamField>
 
@@ -38,6 +38,14 @@ description: 'Generate an image from an image asynchronously'
 <ParamField body="sampler_name" type="string" required>
   This is the name of the sampler method you will be using to generate an image. Image output varies slightly depending on the method.
   You can pick one of the following methods: `Euler a`, `Euler`, `LMS`, `Heun`, `DPM2`, `DPM2 a`, `DPM++ 2S a`, `DPM++ 2M`, `DPM ++ SDE`, `DPM fast`, `DPM adaptive`, `LMS Karras`, `DPM2 a Karras`, `DPM++ 2S a Karras`, `DPM++ 2M Karras`, `DPM++ SDE Karras`, `DDIM`, `PLMS`, `UniPC`
+</ParamField>
+
+<ParamField body="seed" type="integer">
+  This is the value that determines the output of a random number generator. You can get ALMOST the same image if you provide the same parameters and the seed.
+</ParamField>
+
+<ParamField body="model_name" type="string" required>
+  Specify the name of the model you'd like to use. You can find the model names [here](/endpoints/models)
 </ParamField>
 
 <ParamField body="image_strength" type="float">
@@ -66,14 +74,6 @@ description: 'Generate an image from an image asynchronously'
 <ParamField body="resize_mode" type="integer">
   It can be either `0`, `1`, `2`, or `3`. `0 -> “just resize”`, `1 -> “crop and resize”`, `2 -> “resize”`, `3 -> “fill”`
   This parameter is required for inpainting.
-</ParamField>
-
-<ParamField body="seed" type="integer">
-  This is the value that determines the output of a random number generator. You can get ALMOST the same image if you provide the same parameters and the seed.
-</ParamField>
-
-<ParamField body="webhook" type="string" required>
-  This is the callback url where you want to receive your response.
 </ParamField>
 
 ### Response
@@ -108,19 +108,20 @@ curl --location 'https://randomseed.lol/v1/sync/img2img' \
         "inpainting_fill": 0,
         "inpainting_mask_invert": 0,
         "sampler_name": "Euler a",
-        "resize_mode": 0,
-        "webhook": "..."
-    }
+        "resize_mode": 0
+    }`
   }'
 ```
-
 </RequestExample>
 
 <ResponseExample>
 
 ```json Response
 {
-  "message": "image generation in progress"
+    "message": "image generated",
+    "output": [
+        "..."
+    ]
 }
 ```
 </ResponseExample>

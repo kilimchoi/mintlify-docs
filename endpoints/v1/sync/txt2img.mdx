@@ -27,7 +27,7 @@ description: 'Generate an image from a text prompt synchronously'
   This is the height of the image
 </ParamField>
 
-<ParamField body="steps" type="string">
+<ParamField body="number_of_steps" type="string">
   This is the number of the denoising steps used by the AI model when generating an image from the text prompt. A higher number results in a longer generation time, and does not necessarily guarantee higher image quality.
 </ParamField>
 
@@ -42,6 +42,10 @@ description: 'Generate an image from a text prompt synchronously'
 
 <ParamField body="seed" type="integer">
   This is the value that determines the output of a random number generator. You can get ALMOST the same image if you provide the same parameters and the seed.
+</ParamField>
+
+<ParamField body="model_name" type="string" required>
+  Specify the name of the model you'd like to use. You can find the model names [here](/endpoints/models)
 </ParamField>
 
 ### Response

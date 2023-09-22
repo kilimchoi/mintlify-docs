@@ -29,7 +29,7 @@
     },
     {
       "group": "Endpoints",
-      "pages": ["endpoints/txt2img/v1/async", "endpoints/txt2img/v1/sync", "endpoints/img2img/v1/async", "endpoints/img2img/v1/sync", "endpoints/controlnet/controlnet", "endpoints/model/models", "endpoints/model/loadModel", "endpoints/animatediffusion/animatediffusion", "endpoints/roop/roop"]
+      "pages": ["endpoints/v1/txt2img", "endpoints/v1/sync/txt2img", "endpoints/v1/img2img", "endpoints/v1/sync/img2img", "endpoints/v1/controlnet", "endpoints/v1/models", "endpoints/v1/load-model", "endpoints/v1/animatediffusion", "endpoints/v1/roop"]
     }
   ],
   "footerSocials": {
