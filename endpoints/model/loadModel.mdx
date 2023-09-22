@@ -1,0 +1,66 @@
+---
+title: 'v1/load-model'
+api: 'POST https://randomseed.lol/v1/load-model'
+description: 'Load a custom model from huggingface or civitai'
+---
+### Headers
+
+<ParamField header="Authorization" type="string">
+  Your API key. This is required by most endpoints to access our API programatically. You can get your api key by clicking on 'API reference' tab under your profile icon.
+</ParamField>
+
+### Body
+
+<ParamField body="url" type="string" required>
+  Link to the model
+</ParamField>
+
+<ParamField body="model_name" type="string" required>
+  Name of the model
+</ParamField>
+
+<ParamField body="webhook_url" type="string" required>
+  Callback url that will be called once the model is loaded
+</ParamField>
+
+<ParamField body="model_type" type="string" required>
+  Either "checkpoint" or "lora"
+</ParamField>
+
+<ParamField body="support_inpainting" type="boolean">
+  Whether the model supports inpainting or not.
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  image generation in progress
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location 'https://randomseed.lol/v1/load-model' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer $RANDOMSEED_API_KEY' \
+--data '{
+    "load_model": {
+        "url": "https://civitai.com/api/download/models/130072?type=Model&format=SafeTensor&size=full&fp=fp16",
+        "model_name": "realistic_vision_v5.1",
+        "webhook_url": "https://webhook.site/b8d78e3c-7c73-478b-b446-0337d78513da",
+        "model_type": "checkpoint",
+        "support_inpainting": false
+    }
+}
+'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+    "message": "model loading in progress"
+}
+```
+</ResponseExample>

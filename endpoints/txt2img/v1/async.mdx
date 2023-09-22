@@ -1,0 +1,94 @@
+---
+title: 'v1/txt2img'
+api: 'POST https://randomseed.lol/v1/txt2img'
+description: 'Generate an image from a text prompt asynchronously'
+---
+### Headers
+
+<ParamField header="Authorization" type="string">
+  Your API key. This is required by most endpoints to access our API programatically. You can get your api key by clicking on 'API reference' tab under your profile icon.
+</ParamField>
+
+### Body
+
+<ParamField body="prompt" type="string" required>
+  This is the text prompt for the image you want generated.
+</ParamField>
+
+<ParamField body="negative_prompt" type="string">
+  This is the text prompt describing what you don't want to see in the image.
+</ParamField>
+
+<ParamField body="width" type="string">
+  This is the width of the image
+</ParamField>
+
+<ParamField body="height" type="string">
+  This is the height of the image
+</ParamField>
+
+<ParamField body="steps" type="string">
+  This is the number of the denoising steps used by the AI model when generating an image from the text prompt. A higher number results in a longer generation time, and does not necessarily guarantee higher image quality.
+</ParamField>
+
+<ParamField body="cfg_scale" type="float">
+  This is the number of the number you specify to control how closely AI model should follow the text prompt. 7 or 7.5 usually works best. You can increase the value if the generated image doesn’t match your prompt.
+</ParamField>
+
+<ParamField body="sampler_name" type="string" required>
+  This is the name of the sampler method you will be using to generate an image. Image output varies slightly depending on the method.
+  You can pick one of the following methods: `Euler a`, `Euler`, `LMS`, `Heun`, `DPM2`, `DPM2 a`, `DPM++ 2S a`, `DPM++ 2M`, `DPM ++ SDE`, `DPM fast`, `DPM adaptive`, `LMS Karras`, `DPM2 a Karras`, `DPM++ 2S a Karras`, `DPM++ 2M Karras`, `DPM++ SDE Karras`, `DDIM`, `PLMS`, `UniPC`
+</ParamField>
+
+<ParamField body="seed" type="integer">
+  This is the value that determines the output of a random number generator. You can get ALMOST the same image if you provide the same parameters and the seed.
+</ParamField>
+
+<ParamField body="webhook" type="string" required>
+  This is the callback url where you want to receive your response.
+</ParamField>
+
+<ParamField body="track" type="string">
+  You can specify any value here to track the request that's received on your webhook's end.
+</ParamField>
+
+
+### Response
+
+<ResponseField name="message" type="string">
+  image generation in progress
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location 'https://randomseed.lol/v1/txt2img' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer $RANDOMSEED_API_KEY' \
+  --data '{
+      "txt2img": {
+          "prompt": "Cute cat",
+          "negative_prompt": "ugly, out of frame",
+          "width": "512",
+          "height": "512",
+          "number_of_images": "1",
+          "steps": "20",
+          "cfg_scale": 7,
+          "sampler_name": "Euler a",
+          "seed": "-1",
+          "model_name": "realistic_vision_v4",
+          "webhook": "..." //replace with your own webhook url
+      }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "message": "image generation in progress"
+}
+```
+</ResponseExample>

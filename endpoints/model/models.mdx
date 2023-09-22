@@ -1,0 +1,58 @@
+---
+title: 'v1/models'
+api: 'GET https://randomseed.lol/v1/models'
+description: 'Get all the models'
+---
+### Headers
+
+<ParamField header="Authorization" type="string">
+  Your API key. This is required by most endpoints to access our API programatically. You can get your api key by clicking on 'API reference' tab under your profile icon.
+</ParamField>
+
+### Response
+
+<ResponseField name="public_models" type="object[]">
+  <Expandable title="properties">
+    <ResponseField name="support_inpainting" type="boolean">
+      Whether inpainting can be used on this model or not.
+    </ResponseField>
+    <ResponseField name="model_name" type="string">
+      Model name
+    </ResponseField>
+    <ResponseField name="model_type" type="string">
+      Model type. Either checkpoint or lora
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location 'https://randomseed.lol/v1/models' \
+--header 'Authorization: Bearer $RANDOMSEED_API_KEY'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+    "public_models": [
+      {
+        "support_inpainting": false,
+        "model_name": "...",
+        "model_type": "..."
+      },
+      ...
+    ],
+    "private_models": [
+      {
+        "support_inpainting": false,
+        "model_name": "...",
+        "model_type": "..."
+      },
+      ...
+    ]
+}
+```
+</ResponseExample>

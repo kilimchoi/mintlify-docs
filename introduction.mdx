@@ -1,71 +1,50 @@
 ---
-title: Introduction
-description: "Welcome to the home of your new documentation"
+title: 'Introduction'
+description: 'Start building image generators in minutes!'
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
+### API key
 
-## Setting up
+Create your account [RandomSeed](https://randomseed.co/signup) & grab your [api key](https://randomseed.co/api-reference/integrate)
 
-The first step to world-class documentation is setting up your editing environnments.
+### Authentication
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+RandomSeed API uses your api key for authentication. **Please do not share your api key!**
 
-## Make it yours
+All API requests should include your API key in an `Authorization` HTTP header as follows:
+```md
+Authorization: Bearer RANDOMSEED_API_KEY
+```
 
-Update your docs to your brand and add valuable content for the best user conversion.
+### Making requests
+Copy & paste the code block below in your terminal to make your first request.
 
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/showcase"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+```bash
+curl --location 'https://randomseed.lol/v1/sync/txt2img' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer $RANDOMSEED_API_KEY' \
+  --data '{
+      "txt2img": {
+          "prompt": "Cute cat",
+          "negative_prompt": "ugly, out of frame",
+          "width": "512",
+          "height": "512",
+          "number_of_images": "1",
+          "steps": "20",
+          "cfg_scale": 7,
+          "sampler_name": "Euler a",
+          "seed": "-1",
+          "model_name": "realistic_vision_v4",
+      }
+  }'
+```
+This makes a synchronous request to generate an image of a cat. You should get back a response that is like the following:
+
+```bash
+{
+    "message": "image generated",
+    "output": [
+        "https://serve-model-sd-outputs.s3.amazonaws.com/0a39f509-8f59-4cd9-8bab-86c167d681d9.png"
+    ]
+}
+```
