@@ -40,10 +40,6 @@ description: 'Generate an image from an image synchronously'
   You can pick one of the following methods: `Euler a`, `Euler`, `LMS`, `Heun`, `DPM2`, `DPM2 a`, `DPM++ 2S a`, `DPM++ 2M`, `DPM ++ SDE`, `DPM fast`, `DPM adaptive`, `LMS Karras`, `DPM2 a Karras`, `DPM++ 2S a Karras`, `DPM++ 2M Karras`, `DPM++ SDE Karras`, `DDIM`, `PLMS`, `UniPC`
 </ParamField>
 
-<ParamField body="seed" type="integer">
-  This is the value that determines the output of a random number generator. You can get ALMOST the same image if you provide the same parameters and the seed.
-</ParamField>
-
 <ParamField body="model_name" type="string" required>
   Specify the name of the model you'd like to use. You can find the model names [here](/endpoints/models)
 </ParamField>
@@ -75,7 +71,9 @@ description: 'Generate an image from an image synchronously'
   It can be either `0`, `1`, `2`, or `3`. `0 -> “just resize”`, `1 -> “crop and resize”`, `2 -> “resize”`, `3 -> “fill”`
   This parameter is required for inpainting.
 </ParamField>
-
+<ParamField body="seed" type="integer">
+  This is the value that determines the output of a random number generator. You can get ALMOST the same image if you provide the same parameters and the seed.
+</ParamField>
 ### Response
 
 <ResponseField name="message" type="string">
@@ -97,8 +95,8 @@ curl --location 'https://randomseed.lol/v1/sync/img2img' \
         "number_of_images": "1",
         "steps": "20",
         "cfg_scale": 7,
-        "seed": "-1",
         "model_name": "realistic_vision_v3_inpainting",
+        "sampler_name": "Euler a",
         "include_init_images": true,
         "image_strength": 0.8,
         "image_url": "...",
@@ -107,8 +105,8 @@ curl --location 'https://randomseed.lol/v1/sync/img2img' \
         "inpaint_full_res_padding": 32,
         "inpainting_fill": 0,
         "inpainting_mask_invert": 0,
-        "sampler_name": "Euler a",
-        "resize_mode": 0
+        "resize_mode": 0,
+        "seed": "-1"
     }`
   }'
 ```
