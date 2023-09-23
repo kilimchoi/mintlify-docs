@@ -2,6 +2,14 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "RandomSeed",
   "favicon": "/favicon.png",
+  "api": {
+    "auth": {
+      "method": "bearer"
+    },
+    "playground": {
+      "mode": "hide"
+    }
+  },
   "colors": {
     "primary": "#9563FF",
     "light": "#AE87FF",
