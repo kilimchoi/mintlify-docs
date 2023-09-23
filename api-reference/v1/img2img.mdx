@@ -12,7 +12,7 @@ description: 'Generate an image from an image asynchronously'
 ### Body
 
 <ParamField body="prompt" type="string" required>
-  This is the text prompt for the image you want generated.
+  This is the text prompt for the image you want generated. Loras can be used by adding this in the prompt <lora:LORA_NAME:weight> where LORA_NAME is the name of the lora model and weight can be from 0 to 1, with decimal values supported.
 </ParamField>
 
 <ParamField body="negative_prompt" type="string" default="">
