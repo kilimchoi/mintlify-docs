@@ -79,6 +79,9 @@ description: 'Generate an image from an image synchronously'
   It can be either `0`, `1`, `2`, or `3`. `0 -> “just resize”`, `1 -> “crop and resize”`, `2 -> “resize”`, `3 -> “fill”`
   This parameter is required for inpainting.
 </ParamField>
+<ParamField body="image_cfg_scale" type="float" default="0.7">
+  Determines how much the result resembles your starting image, so a lower value means a stronger effect. This is the exact opposite of cfg_scale.
+</ParamField>
 
 <ParamField body="highres_fix_method" type="string">
   Refer to the following [table](/documentation/highres-methods) for supported methods.
