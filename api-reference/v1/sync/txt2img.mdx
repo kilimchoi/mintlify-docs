@@ -15,40 +15,48 @@ description: 'Generate an image from a text prompt synchronously'
   This is the text prompt for the image you want generated.
 </ParamField>
 
-<ParamField body="negative_prompt" type="string">
+<ParamField body="negative_prompt" type="string" default="">
   This is the text prompt describing what you don't want to see in the image.
 </ParamField>
 
-<ParamField body="width" type="string">
+<ParamField body="width" type="string" default="512">
   This is the width of the image
 </ParamField>
 
-<ParamField body="height" type="string">
+<ParamField body="height" type="string" default="512">
   This is the height of the image
 </ParamField>
 
-<ParamField body="number_of_images" type="string">
+<ParamField body="number_of_images" type="string" default="1">
   Number of images you want to generate
 </ParamField>
 
-<ParamField body="steps" type="string">
+<ParamField body="steps" type="string" default="50">
   This is the number of the denoising steps used by the AI model when generating an image from the text prompt. A higher number results in a longer generation time, and does not necessarily guarantee higher image quality.
 </ParamField>
 
-<ParamField body="cfg_scale" type="float">
-  This is the number of the number you specify to control how closely AI model should follow the text prompt. 7 or 7.5 usually works best. You can increase the value if the generated image doesn’t match your prompt.
+<ParamField body="cfg_scale" type="float" default="7.0">
+  This is the number of the number you specify to control how closely AI model should follow the text prompt. 7 or 7.5 usually works best. You can increase the value if the generated image doesn’t match your prompt. Increment it by 0.5.
 </ParamField>
 
 <ParamField body="sampler_name" type="string" required>
   This is the name of the sampler method you will be using to generate an image. Image output varies slightly depending on the method.
-  You can pick one of the following methods: `Euler a`, `Euler`, `LMS`, `Heun`, `DPM2`, `DPM2 a`, `DPM++ 2S a`, `DPM++ 2M`, `DPM ++ SDE`, `DPM fast`, `DPM adaptive`, `LMS Karras`, `DPM2 a Karras`, `DPM++ 2S a Karras`, `DPM++ 2M Karras`, `DPM++ SDE Karras`, `DDIM`, `PLMS`, `UniPC`
+  You can pick one of the [following methods](/documentation/sampler-methods)
 </ParamField>
 
 <ParamField body="model_name" type="string" required>
   Specify the name of the model you'd like to use. You can find the model names [here](/api-reference/v1/models)
 </ParamField>
 
-<ParamField body="seed" type="string">
+<ParamField body="highres_fix_method" type="string">
+  Refer to the following [table](/documentation/highres-methods) for supported methods.
+</ParamField>
+
+<ParamField body="image_strength" type="float" default="0.7">
+  Make sure to set this value when you're using this when passing in the highres fix method.
+</ParamField>
+
+<ParamField body="seed" type="string" default="-1">
   This is the value that determines the output of a random number generator. You can get ALMOST the same image if you provide the same parameters and the seed.
 </ParamField>
 

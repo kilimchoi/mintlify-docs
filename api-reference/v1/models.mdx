@@ -25,6 +25,20 @@ description: 'Get all the models'
   </Expandable>
 </ResponseField>
 
+<ResponseField name="private_models" type="object[]">
+  <Expandable title="properties">
+    <ResponseField name="support_inpainting" type="boolean">
+      Whether inpainting can be used on this model or not.
+    </ResponseField>
+    <ResponseField name="model_name" type="string">
+      Model name
+    </ResponseField>
+    <ResponseField name="model_type" type="string">
+      Model type. Either checkpoint or lora
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
 <RequestExample>
 
 ```bash Example Request

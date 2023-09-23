@@ -15,28 +15,28 @@ description: 'Generate an image from an image synchronously'
   This is the text prompt for the image you want generated.
 </ParamField>
 
-<ParamField body="negative_prompt" type="string">
+<ParamField body="negative_prompt" type="string" default="">
   This is the text prompt describing what you don't want to see in the image.
 </ParamField>
 
-<ParamField body="width" type="string">
+<ParamField body="width" type="string" default="512">
   This is the width of the image
 </ParamField>
 
-<ParamField body="height" type="string">
+<ParamField body="height" type="string" default="512">
   This is the height of the image
 </ParamField>
 
-<ParamField body="number_of_images" type="string">
+<ParamField body="number_of_images" type="string" default="1">
   Number of images you want to generate
 </ParamField>
 
-<ParamField body="steps" type="string">
+<ParamField body="steps" type="string" default="50">
   This is the number of the denoising steps used by the AI model when generating an image. A higher number results in a longer generation time, and does not necessarily guarantee higher image quality.
 </ParamField>
 
-<ParamField body="cfg_scale" type="float">
-  This is the number of the number you specify to control how closely AI model should follow the text prompt. 7 or 7.5 usually works best. You can increase the value if the generated image doesn’t match your prompt.
+<ParamField body="cfg_scale" type="float" default="7.0">
+  This is the number of the number you specify to control how closely AI model should follow the text prompt. 7 or 7.5 usually works best. You can increase the value if the generated image doesn’t match your prompt. Increment it by 0.5.
 </ParamField>
 
 <ParamField body="model_name" type="string" required>
@@ -45,15 +45,14 @@ description: 'Generate an image from an image synchronously'
 
 <ParamField body="sampler_name" type="string" required>
   This is the name of the sampler method you will be using to generate an image. Image output varies slightly depending on the method.
-  You can pick one of the following methods: `Euler a`, `Euler`, `LMS`, `Heun`, `DPM2`, `DPM2 a`, `DPM++ 2S a`, `DPM++ 2M`, `DPM ++ SDE`, `DPM fast`, `DPM adaptive`, `LMS Karras`, `DPM2 a Karras`, `DPM++ 2S a Karras`, `DPM++ 2M Karras`, `DPM++ SDE Karras`, `DDIM`, `PLMS`, `UniPC`
+  You can pick one of the [following methods](/documentation/sampler-methods)
 </ParamField>
 
-<ParamField body="include_init_images" type="boolean">
+<ParamField body="include_init_images" type="boolean" default="true">
   Set it to true if you want to do inpainting
 </ParamField>
 
-
-<ParamField body="image_strength" type="float">
+<ParamField body="image_strength" type="float" default="0.7">
   Determines how close the generated image will be to the provided image.
 </ParamField>
 
@@ -63,25 +62,29 @@ description: 'Generate an image from an image synchronously'
 <ParamField body="mask" type="string">
   Link to the image that will be used for inpainting. You need to specify the region of the starting image that you want modified.
 </ParamField>
-<ParamField body="inpaint_full_res" type="boolean">
+<ParamField body="inpaint_full_res" type="boolean" default="false">
   If set to true, inpaint area will be the same resolution as the starting image. If set to false, inpaint area will stretch to fit the starting image. This parameter is required for inpainting.
 </ParamField>
-<ParamField body="inpaint_full_res_padding" type="integer">
+<ParamField body="inpaint_full_res_padding" type="integer" default="32">
   Padding around the masked object to inpaint in full resolution This parameter is required for inpainting.
 </ParamField>
-<ParamField body="inpainting_fill" type="integer">
+<ParamField body="inpainting_fill" type="integer" default="1">
   Determines how masked content should be displayed. It can be either `0`, `1`, `2`, or `3`. `0 -> “fill”`, `1 -> “original”`, `2 -> “latent noise”`, `3 -> “latent nothing”`
   This parameter is required for inpainting.
 </ParamField>
-<ParamField body="inpainting_mask_invert" type="integer">
+<ParamField body="inpainting_mask_invert" type="integer" default="0">
   Determines whether you want to inpaint the masked object or outside of the masked object. 0 will inpaint the masked object. 1 will inpaint the region outside of the masked object. This parameter is required for inpainting.
 </ParamField>
-<ParamField body="resize_mode" type="integer">
+<ParamField body="resize_mode" type="integer" default="1">
   It can be either `0`, `1`, `2`, or `3`. `0 -> “just resize”`, `1 -> “crop and resize”`, `2 -> “resize”`, `3 -> “fill”`
   This parameter is required for inpainting.
 </ParamField>
 
-<ParamField body="seed" type="integer">
+<ParamField body="highres_fix_method" type="string">
+  Refer to the following [table](/documentation/highres-methods) for supported methods.
+</ParamField>
+
+<ParamField body="seed" type="integer" default="-1">
   This is the value that determines the output of a random number generator. You can get ALMOST the same image if you provide the same parameters and the seed.
 </ParamField>
 
