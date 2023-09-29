@@ -3,9 +3,6 @@
   "name": "RandomSeed",
   "favicon": "/favicon.png",
   "api": {
-    "auth": {
-      "method": "bearer"
-    },
     "playground": {
       "mode": "hide"
     }
