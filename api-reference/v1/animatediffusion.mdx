@@ -49,7 +49,7 @@ description: 'Animate an image'
 </ParamField>
 
 <ParamField body="fps" type="integer" required>
-  Frames per second. 8 is recommended.
+  Frames per second. 8 is recommended. You can increase the length of the video by lowering fps.
 </ParamField>
 
 <ParamField body="format" type="string" required>
@@ -57,7 +57,7 @@ description: 'Animate an image'
 </ParamField>
 
 <ParamField body="video_length" type="integer" required>
-  Length of the video. `0-24` for `mm_sd_v14`, `mm_sd_v15` and `0-32` for `mm_sd_v15_v2`.
+  Length of the video. `0-24` for `mm_sd_v14`, `mm_sd_v15` and `0-32` for `mm_sd_v15_v2`. Total length of the video will be determined by video_length / fps.
 </ParamField>
 
 <ParamField body="webhook" type="string" required>
