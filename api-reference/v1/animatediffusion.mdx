@@ -1,5 +1,114 @@
 ---
 title: 'v1/animate-diffusion'
 api: 'POST https://randomseed.lol/v1/animate-diffusion'
-description: 'Animate an image (Coming Soon)'
+description: 'Animate an image'
 ---
+### Headers
+
+<ParamField header="Authorization" type="string">
+  Your API key. This is required by most endpoints to access our API programatically. You can get your api key by clicking on 'API reference' tab under your profile icon.
+</ParamField>
+
+### Body
+
+<ParamField body="prompt" type="string" required>
+  This is the text prompt for the image you want generated. Loras can be used by adding this in the prompt `<lora:LORA_NAME:weight>` where LORA_NAME is the name of the lora model and weight can be from 0 to 1, with decimal values supported. If you're using animate diffusion loras, make sure that you set the motion_model_name to `mm_sd_v15_v2`.
+</ParamField>
+
+<ParamField body="negative_prompt" type="string" default="">
+  This is the text prompt describing what you don't want to see in the video.
+</ParamField>
+
+<ParamField body="width" type="string" default="512">
+  This is the width of the video
+</ParamField>
+
+<ParamField body="height" type="string" default="512">
+  This is the height of the video
+</ParamField>
+
+<ParamField body="steps" type="string" default="50">
+  This is the number of the denoising steps used by the AI model when generating a video from the text prompt. A higher number results in a longer generation time, and does not necessarily guarantee higher video quality.
+</ParamField>
+
+<ParamField body="cfg_scale" type="float" default="7.0">
+  This is the number of the number you specify to control how closely AI model should follow the text prompt. 7 or 7.5 usually works best. You can increase the value if the generated video doesn’t match your prompt. Increment it by 0.5.
+</ParamField>
+
+<ParamField body="sampler_name" type="string" required>
+  This is the name of the sampler method you will be using to generate a video. Video output varies slightly depending on the method.
+  You can pick one of the [following methods](/documentation/sampler-methods)
+</ParamField>
+
+<ParamField body="model_name" type="string" required>
+  Specify the name of the base model you'd like to use. You can find the model names [here](/api-reference/v1/models)
+</ParamField>
+
+<ParamField body="motion_model_name" type="string" required>
+  Name of the motion model you'd like to use to animate. You can find the model names [here](/documentation/motion-models)
+</ParamField>
+
+<ParamField body="fps" type="integer" required>
+  Frames per second.
+</ParamField>
+
+<ParamField body="format" type="string" required>
+  Format of the video. Choose one of `GIF`, `MP4`, `PNG`.
+</ParamField>
+
+<ParamField body="video_length" type="integer" required>
+  Length of the video. `0-24` for `mm_sd_v14`, `mm_sd_v15` and `0-32` for `mm_sd_v15_v2`.
+</ParamField>
+
+<ParamField body="webhook" type="string" required>
+  This is the callback url where you want to receive your response.
+</ParamField>
+
+<ParamField body="track_id" type="string">
+  You can specify any value here to track the request that's received on your webhook's end.
+</ParamField>
+
+<ParamField body="seed" type="string" default="-1">
+  This is the value that determines the output of a random number generator. You can get ALMOST the same image if you provide the same parameters and the seed.
+</ParamField>
+
+
+### Response
+
+<ResponseField name="message" type="string">
+  animate diffusion in progress
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location 'https://randomseed.lol/v1/animate-diffusion' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer $RANDOMSEED_API_KEY' \
+  --data '{
+    "animate_diffusion": {
+      "prompt": "cute dog",
+      "negative_prompt": "ugly, out of frame",
+      "steps": "20",
+      "model_name": "realistic_vision_v5.1",
+      "sampler_name": "Euler a",
+      "webhook": "https://webhook.site/514265a4-a991-4812-91e3-7640de348ab2",
+      "track_id": 1,
+      "motion_model_name": "mm_sd_v15_v2",
+      "fps": 8,
+      "format": "MP4",
+      "video_length": 16
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "message": "animate diffusion in progress"
+}
+```
+</ResponseExample>
