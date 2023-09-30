@@ -58,6 +58,10 @@
     {
       "group": "Motion Models",
       "pages": ["documentation/motion-models"]
+    },
+    {
+      "group": "Loras For Animate Diffusion",
+      "pages": ["documentation/animate-diffusion-loras"]
     }
   ],
   "footerSocials": {
