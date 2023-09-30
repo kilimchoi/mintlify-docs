@@ -57,7 +57,7 @@ description: 'Animate an image'
 </ParamField>
 
 <ParamField body="video_length" type="integer" required>
-  Length of the video. `0-24` for `mm_sd_v14`, `mm_sd_v15` and `0-32` for `mm_sd_v15_v2`. Total length of the video will be determined by video_length / fps.
+  Length of the video. `0-24` for `mm_sd_v14.ckpt`, `mm_sd_v15.ckpt` and `0-32` for `mm_sd_v15_v2.ckpt`. Total length of the video will be determined by video_length / fps.
 </ParamField>
 
 <ParamField body="webhook" type="string" required>
@@ -94,7 +94,7 @@ curl --location 'https://randomseed.lol/v1/animate-diffusion' \
       "sampler_name": "Euler a",
       "webhook": "...", //replace with your own
       "track_id": 1,
-      "motion_model_name": "mm_sd_v15_v2",
+      "motion_model_name": "mm_sd_v15_v2.ckpt",
       "fps": 8,
       "format": "MP4",
       "video_length": 16
