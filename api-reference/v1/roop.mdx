@@ -1,5 +1,81 @@
 ---
 title: 'v1/roop'
 api: 'POST https://randomseed.lol/v1/roop'
-description: 'One-click face swap (Coming Soon)'
+description: 'One-click face swap'
 ---
+
+### Headers
+
+<ParamField header="Authorization" type="string">
+  Your API key. This is required by most endpoints to access our API programatically. You can get your api key by clicking on 'API reference' tab under your profile icon.
+</ParamField>
+
+### Body
+
+<ParamField body="source_image" type="string" required>
+  Url to the source image where the face will be originating from.
+</ParamField>
+
+<ParamField body="target_image" type="string" required>
+  Url to the target image. Final output will be based on this image.
+</ParamField>
+
+<ParamField body="scale" type="integer" default="1">
+  Scale value
+</ParamField>
+
+<ParamField body="upscale_visibility" type="integer" default="1">
+  Upscale Visibility
+</ParamField>
+
+<ParamField body="face_restorer" type="string" default="GFPGAN">
+  Face Restorer Algorithm
+</ParamField>
+
+<ParamField body="restorer_visibility" type="integer" default="1">
+  restorer_visibility
+</ParamField>
+
+<ParamField body="webhook" type="string" required>
+  This is the callback url where you want to receive your response.
+</ParamField>
+
+<ParamField body="track_id" type="string">
+  You can specify any value here to track the request that's received on your webhook's end.
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  roop generation in progress
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location 'https://randomseed.lol/v1/roop' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer $RANDOMSEED_API_KEY' \
+  --data '{
+    "roop": {
+      "source_image":"...", //replace with your image url
+      "target_image": "...", //replace with your image url
+      "scale": 1,
+      "upscale_visibility": 1,
+      "face_restorer": "GFPGAN",
+      "restorer_visibility": 1,
+      "webhook": "...", //replace with your webhook url
+      "track_id": 1
+    }
+  }'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+    "message": "roop generation in progress"
+}
+```
+</ResponseExample>
