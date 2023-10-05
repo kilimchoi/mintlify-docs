@@ -7,7 +7,7 @@ description: 'One-click face swap'
 ### Headers
 
 <ParamField header="Authorization" type="string">
-  Your API key. This is required by most endpoints to access our API programatically. You can get your api key by clicking on 'API reference' tab under your profile icon.
+  Your API key. This is required by most endpoints to access our API programatically. You can get your api key by clicking on `API reference` tab under your profile icon.
 </ParamField>
 
 ### Body
@@ -21,7 +21,7 @@ description: 'One-click face swap'
 </ParamField>
 
 <ParamField body="scale" type="integer" default="1">
-  Scale value
+  Scale value you want to use for upscaling the image. Available values are `0` and `1`.
 </ParamField>
 
 <ParamField body="upscale_visibility" type="integer" default="1">
@@ -29,11 +29,11 @@ description: 'One-click face swap'
 </ParamField>
 
 <ParamField body="face_restorer" type="string" default="GFPGAN">
-  Face Restorer Algorithm
+  Algorithm used to restore the face.
 </ParamField>
 
 <ParamField body="restorer_visibility" type="integer" default="1">
-  restorer_visibility
+  Restorer Visibility. Available values are `0` and `1`. If you use 1, face from the destination image will show up clearly.
 </ParamField>
 
 <ParamField body="webhook" type="string" required>
