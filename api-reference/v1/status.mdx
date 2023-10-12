@@ -1,0 +1,59 @@
+---
+title: 'v1/status/:request_id'
+api: 'GET https://randomseed.lol/v1/status/:request_id'
+description: 'Get the status of the request'
+---
+### API key
+
+Create your account on [RandomSeed](https://randomseed.co/signup) & grab your [api key](https://randomseed.co/api-reference/integrate)
+
+### Headers
+
+<ParamField header="Authorization" type="string">
+  Your API key. This is required by most endpoints to access our API programatically. You can get your api key by clicking on 'API reference' tab under your profile icon.
+</ParamField>
+
+### Response
+
+<ResponseField name="executionTime" type="integer">
+  How long it took to process the request
+</ResponseField>
+<ResponseField name="id" type="string">
+  Request id
+</ResponseField>
+<ResponseField name="output" type="object">
+  <Expandable title="properties">
+    <ResponseField name="image_urls" type="string[]">
+      Contains image urls for the generated images
+    </ResponseField>
+  </Expandable>
+  <ResponseField name="staus" type="string">
+    Status of the response. Can be one of `IN_QUEUE`, `IN_PROGRESS`,  `FAILED`, `COMPLETED`
+  </ResponseField>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location 'https://randomseed.lol/v1/status/4a1fa987-466a-4cc4-8230-0a365128231d-u1' \
+  --header 'Authorization: Bearer $RANDOMSEED_API_KEY' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "delayTime": 147,
+  "executionTime": 12936,
+  "id": "4a1fa987-466a-4cc4-8230-0a365128231d-u1",
+  "output": {
+    "image_urls": [
+      "..."
+    ],
+  },
+  "status": "COMPLETED"
+}
+```
+</ResponseExample>
