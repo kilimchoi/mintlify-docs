@@ -35,8 +35,8 @@ Create your account on [RandomSeed](https://randomseed.co/signup) & grab your [a
 <RequestExample>
 
 ```bash Example Request
-curl --location 'https://randomseed.lol/v1/status/4a1fa987-466a-4cc4-8230-0a365128231d-u1' \
-  --header 'Authorization: Bearer $RANDOMSEED_API_KEY' \
+curl --location "https://randomseed.lol/v1/status/${REQUEST_ID}" \
+  --header "Authorization: Bearer $RANDOMSEED_API_KEY" \
 ```
 
 </RequestExample>
@@ -46,7 +46,7 @@ curl --location 'https://randomseed.lol/v1/status/4a1fa987-466a-4cc4-8230-0a3651
 ```json Response
 {
   "executionTime": 12936,
-  "id": "4a1fa987-466a-4cc4-8230-0a365128231d-u1",
+  "id": "${REQUEST_ID}",
   "output": {
     "image_urls": [
       "..."

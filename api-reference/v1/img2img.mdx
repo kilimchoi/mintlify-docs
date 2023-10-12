@@ -106,10 +106,10 @@ Create your account on [RandomSeed](https://randomseed.co/signup) & grab your [a
 <RequestExample>
 
 ```bash Example Request
-curl --location 'https://randomseed.lol/v1/sync/img2img' \
-  --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer $RANDOMSEED_API_KEY' \
-  --data ' {
+curl --location "https://randomseed.lol/v1/sync/img2img" \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer $RANDOMSEED_API_KEY" \
+  --data '{
     "img2img": {
         "prompt": "Cute cat",
         "negative_prompt": "ugly, out of frame",
@@ -144,7 +144,7 @@ curl --location 'https://randomseed.lol/v1/sync/img2img' \
 {
   "message": "image generation in progress",
   "result": {
-    "id": ...", // request id you're going to use for polling if webhook url is not provided
+    "id": "...", // request id you're going to use for polling if webhook url is not provided
     "status": "IN_QUEUE"
   }
 }
