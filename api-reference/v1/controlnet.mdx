@@ -121,7 +121,11 @@ curl --location "https://randomseed.lol/v1/controlnet" \
 
 ```json Response
 {
-    "message": "image generation in progress"
+    "message": "image generation in progress",
+    "result": {
+      "id": "...", // request id you're going to use for polling if webhook url is not provided
+      "status": "IN_QUEUE"
+    }
 }
 ```
 </ResponseExample>
