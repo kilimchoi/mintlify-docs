@@ -7,6 +7,12 @@ description: 'Get the status of the request'
 
 Create your account on [RandomSeed](https://randomseed.co/signup) & grab your [api key](https://randomseed.co/api-reference/integrate)
 
+
+### Params
+<ParamField header="request_id" type="string">
+  Your request id from txt2img or img2img endpoint. It should be located in the response payload under `response["result"]["id"]`
+</ParamField>
+
 ### Headers
 
 <ParamField header="Authorization" type="string">
