@@ -13,6 +13,19 @@ Create your account on [RandomSeed](https://randomseed.co/signup) & grab your [a
   Your API key. This is required by most endpoints to access our API programatically. You can get your api key by clicking on 'API reference' tab under your profile icon.
 </ParamField>
 
+## Tips
+Make sure to load only a model file with `.safetensors` extension.
+
+When you're loading a model from huggingface, please change part of the url from /blog/main to /resolve/main.
+For example, if you're loading a model from
+`https://huggingface.co/SG161222/Realistic_Vision_V4.0/blob/main/Realistic_Vision_V4.0.safetensors`, then you should set the url in the param to
+`https://huggingface.co/SG161222/Realistic_Vision_V4.0/resolve/main/Realistic_Vision_V4.0.safetensors`
+In addition to checkpoint models, you can also load loras by specifying the model type.
+
+If you're loading a model from civitai, make sure to follow the format `https://civitai.com/api/download/models/<modelId>?type=Model&format=SafeTensor`
+
+Following field is optional: `support_inpainting` - this defaults to false.
+
 ### Body
 
 <ParamField body="url" type="string" required>
