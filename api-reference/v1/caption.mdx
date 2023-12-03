@@ -1,0 +1,52 @@
+---
+title: 'v1/caption'
+api: 'POST https://randomseed.lol/v1/caption'
+description: 'Describe an image'
+---
+### API key
+
+Create your account on [RandomSeed](https://randomseed.co/signup) & grab your [api key](https://randomseed.co/api-reference/integrate)
+
+### Headers
+
+<ParamField header="Authorization" type="string">
+  Your API key. This is required by most endpoints to access our API programatically. You can get your api key by clicking on 'API reference' tab under your profile icon.
+</ParamField>
+
+### Body
+
+<ParamField body="caption_image_url" type="string" required>
+  Url to the image you want to caption
+</ParamField>
+
+<ParamField body="instruction_text" type="string" default="">
+  Describe how you want to caption the image. E.g. "Write me an extremely detailed caption"
+</ParamField>
+
+### Response
+
+<ResponseField name="caption" type="string">
+  Includes the caption message
+</ResponseField>
+
+<RequestExample>
+```bash Example Request
+curl --location "https://randomseed.lol/v1/caption" \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer $RANDOMSEED_API_KEY" \
+  --data '{
+    "caption_image": {
+      "caption_image_url": "...",
+      "instruction_text": "Write me an extremely detailed caption"
+    }
+  }'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{
+  "caption": "A highly detailed and annotated illustration of the inner workings of a human head, showcasing the muscles, veins, arteries, and nerves"
+}
+```
+</ResponseExample>
