@@ -46,7 +46,7 @@
     },
     {
       "group": "Endpoints",
-      "pages": ["api-reference/v1/txt2img", "api-reference/v1/img2img", "api-reference/v1/controlnet", "api-reference/v1/animatediffusion", "api-reference/v1/roop", "api-reference/v1/caption", "api-reference/v1/remove-background", "api-reference/v1/load-model", "api-reference/v1/models", "api-reference/v1/status"]
+      "pages": ["api-reference/v1/txt2img", "api-reference/v1/img2img", "api-reference/v1/controlnet", "api-reference/v1/animatediffusion", "api-reference/v1/roop", "api-reference/v1/caption", "api-reference/v1/load-model", "api-reference/v1/models", "api-reference/v1/status"]
     },
     {
       "group": "ControlNet",
